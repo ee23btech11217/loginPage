@@ -3,6 +3,7 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -69,12 +70,19 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 const ImageButtonComponent = ({ image }) => {
+  const navigate = useNavigate(); // Use useNavigate hook to get navigation function
+
+  const handleButtonClick = () => {
+    navigate(image.route); // Navigate to the specified route when the button is clicked
+  };
+
   return (
     <ImageButton
       focusRipple
       style={{
         width: image.width,
       }}
+      onClick={handleButtonClick} // Attach onClick event handler
     >
       <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
       <ImageBackdrop className="MuiImageBackdrop-root" />
