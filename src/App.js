@@ -1,6 +1,6 @@
 // src/App.js
 
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCurrentRoute } from './slice/routesSlice';
@@ -8,34 +8,49 @@ import Buttons from './features/buttons';
 import Login from './features/Login';
 import RecruiterLogin from './features/recruiterLogin';
 import HomePage from './features/homePage';
+import { Container, AppBar, Toolbar, Typography, Box, Avatar } from '@mui/material';
 import './app.css';
 
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const currentRoute = location.pathname;
-  const [userEmail, setUserEmail] = useState('');
 
-  const handleRouteChange = (route) => {
-    dispatch(setCurrentRoute(route));
-  };
-
-  const handleLogin = (email) => {
-    setUserEmail(email);
-    handleRouteChange('/home');
-  };
+  useEffect(() => {
+    dispatch(setCurrentRoute(currentRoute));
+  }, [currentRoute, dispatch]);
 
   return (
-    <div className="container">
-      {currentRoute !== '/home' && <Buttons onRouteChange={handleRouteChange} />}
-      <Routes>
-        <Route path="/home" element={<HomePage email={userEmail} />} />
-        <Route path="/student" element={<Login role="Student" onLogin={handleLogin} />} />
-        <Route path="/staff" element={<Login role="Staff" onLogin={handleLogin} />} />
-        <Route path="/coordinator" element={<Login role="Coordinator" onLogin={handleLogin} />} />
-        <Route path="/recruiter" element={<RecruiterLogin onLogin={handleLogin} />} />
-      </Routes>
-    </div>
+    <Container maxWidth="lg" className="container">
+      <AppBar position="static">
+        <Toolbar>
+          <Avatar alt="Logo" src="/ocs.jpg" sx={{ marginRight: 2 }} />
+          {currentRoute !== '/home' ? (
+            <Typography variant="h6" gutterBottom>
+              OCS Login Page
+            </Typography>
+          ) : (
+            <Typography variant="h6" gutterBottom>
+              OCS Home Page
+            </Typography>
+          )}
+        </Toolbar>
+      </AppBar>
+      <Box mt={2}>
+        {currentRoute !== '/home' && (
+          <Box className="buttons-container">
+            <Buttons />
+          </Box>
+        )}
+        <Routes>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/student" element={<Login role="Student" />} />
+          <Route path="/staff" element={<Login role="Staff" />} />
+          <Route path="/coordinator" element={<Login role="Coordinator" />} />
+          <Route path="/recruiter" element={<RecruiterLogin />} />
+        </Routes>
+      </Box>
+    </Container>
   );
 }
 

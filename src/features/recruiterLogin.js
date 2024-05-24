@@ -4,7 +4,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { useNavigate } from 'react-router-dom';
 import './recruiterLogin.css';
 
-function RecruiterLogin({ onLogin }) {
+function RecruiterLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [captcha, setCaptcha] = useState('');
@@ -18,8 +18,9 @@ function RecruiterLogin({ onLogin }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (email && password && captcha) {
-            onLogin(email);
+            console.log(`Recruiter Login Success:`, { email });
             navigate('/home');
+            localStorage.setItem('email', email);
         } else {
             setErrorMessage('Please fill in all fields.');
         }

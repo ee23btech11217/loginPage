@@ -11,10 +11,3 @@ body {
   background-color: #f0f0f0;
   color: #333;
 }
-
-.buttons-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}

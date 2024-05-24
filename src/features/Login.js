@@ -5,7 +5,7 @@ import { jwtDecode } from 'jwt-decode'; // Import jwt-decode
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Login.css';
 
-const Login = ({ role, onLogin }) => {
+const Login = ({ role}) => {
   const navigate = useNavigate(); // Initialize the navigate function
 
   const responseMessage = (response) => {
@@ -14,11 +14,8 @@ const Login = ({ role, onLogin }) => {
     const { email } = decodedToken; // Extract email from the decoded token
     console.log(`${role} Login Success:`, { email });
 
-    // Handle the login response
-    if (onLogin) {
-      onLogin(email);
-      navigate('/home'); // Navigate to the home page after successful login
-    }
+      navigate('/home'); 
+      localStorage.setItem('email', email);
   };
 
   const errorMessage = (error) => {

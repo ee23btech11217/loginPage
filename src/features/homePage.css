@@ -1,0 +1,27 @@
+/* src/features/HomePage.css */
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.home-paper {
+    padding: 2rem;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.home-button {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 200px;
+}
+
+.home-content {
+    margin-top: 2rem;
+    color: #666666;
+}
