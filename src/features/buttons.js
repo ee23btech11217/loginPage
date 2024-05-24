@@ -10,7 +10,7 @@ const images = [
     route: '/student', // Route for student
   },
   {
-    url: process.env.PUBLIC_URL + '/iith-2  .jpg', // Image URL for recruiter
+    url: process.env.PUBLIC_URL + '/iith-2.jpg', // Image URL for recruiter
     title: 'Recruiter',
     width: '20%',
     route: '/recruiter', // Route for recruiter
