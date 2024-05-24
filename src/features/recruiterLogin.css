@@ -1,0 +1,35 @@
+.recruiter-login-container {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .recruiter-login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the form items horizontally */
+  }
+  
+  .recruiter-login-form .textfield {
+    margin-bottom: 0.8rem; /* Reduce the bottom margin by 20% */
+    width: 100%; /* Set the text fields to take full width */
+    max-width: 300px; /* Limit the maximum width */
+    height: 2.4rem; /* Reduce the height by 20% */
+  }
+  
+  .recruiter-login-captcha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0.8rem; /* Reduce the top margin by 20% */
+    width: 100%;
+  }
+  
+  .recruiter-login-error {
+    color: red;
+    margin-top: 1.6rem; /* Double the margin for 20% scaling */
+  }
+  
+  

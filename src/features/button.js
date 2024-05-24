@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate from react
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
-  height: 200,
+  height: 100,
   [theme.breakpoints.down('sm')]: {
     width: '100% !important', // Overrides inline-style
-    height: 100,
+    height: 80,
   },
   '&:hover, &.Mui-focusVisible': {
     zIndex: 1,
@@ -21,7 +21,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
       opacity: 0,
     },
     '& .MuiTypography-root': {
-      border: '4px solid currentColor',
+      border: '2px solid currentColor',
     },
   },
 }));
@@ -70,10 +70,10 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 const ImageButtonComponent = ({ image }) => {
-  const navigate = useNavigate(); // Use useNavigate hook to get navigation function
+  const navigate = useNavigate(); 
 
   const handleButtonClick = () => {
-    navigate(image.route); // Navigate to the specified route when the button is clicked
+    navigate(image.route); 
   };
 
   return (
@@ -82,7 +82,7 @@ const ImageButtonComponent = ({ image }) => {
       style={{
         width: image.width,
       }}
-      onClick={handleButtonClick} // Attach onClick event handler
+      onClick={handleButtonClick} 
     >
       <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
       <ImageBackdrop className="MuiImageBackdrop-root" />
