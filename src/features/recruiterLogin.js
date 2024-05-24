@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Box } from '@mui/material';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { useNavigate } from 'react-router-dom';
 import './recruiterLogin.css';
 
-function RecruiterLogin() {
+function RecruiterLogin({ onLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [captcha, setCaptcha] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleCaptchaChange = (value) => {
         setCaptcha(value);
@@ -16,9 +18,8 @@ function RecruiterLogin() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (email && password && captcha) {
-            // Your authentication logic here
-            // Verify the captcha with your backend server
-            // If captcha is verified, proceed with form submission
+            onLogin(email);
+            navigate('/home');
         } else {
             setErrorMessage('Please fill in all fields.');
         }
