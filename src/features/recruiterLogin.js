@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Container, Box } from '@mui/material';
 import ReCAPTCHA from 'react-google-recaptcha';
-import './recruiterLogin.css'; 
+import './recruiterLogin.css';
 
 function RecruiterLogin() {
     const [email, setEmail] = useState('');
@@ -26,9 +26,11 @@ function RecruiterLogin() {
 
     return (
         <Container maxWidth="sm">
-            <Box className="recruiter-login-container"> {/* Add class name */}
-                <Typography variant="h4" component="h2" gutterBottom>Recruiter Login</Typography>
-                <form onSubmit={handleSubmit} className="recruiter-login-form"> {/* Add class name */}
+            <Box className="recruiter-login-container">
+                <Typography variant="h4" component="h2" gutterBottom className="recruiter-login-title">
+                    Recruiter Login
+                </Typography>
+                <form onSubmit={handleSubmit} className="recruiter-login-form">
                     <TextField
                         label="Email"
                         type="email"
@@ -37,7 +39,7 @@ function RecruiterLogin() {
                         required
                         fullWidth
                         margin="normal"
-                        className="textfield" 
+                        className="textfield"
                     />
                     <TextField
                         label="Password"
@@ -47,15 +49,19 @@ function RecruiterLogin() {
                         required
                         fullWidth
                         margin="normal"
-                        className="textfield" 
+                        className="textfield"
                     />
-                    <Box className="recruiter-login-captcha"> {/* Add class name */}
-                        <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} onChange={handleCaptchaChange} />
+                    <Box className="recruiter-login-captcha">
+                        <ReCAPTCHA className="g-recaptcha" sitekey={process.env.REACT_APP_SITE_KEY} onChange={handleCaptchaChange} />
                     </Box>
-                    <Button type="submit" variant="contained" color="primary" style={{ marginTop: '2rem' }}> {/* Adjust inline style */}
+                    <Button type="submit" variant="contained" color="primary" className="recruiter-login-button">
                         Login
                     </Button>
-                    {errorMessage && <Typography className="recruiter-login-error">{errorMessage}</Typography>} {/* Add class name */}
+                    {errorMessage && (
+                        <Typography className="recruiter-login-error">
+                            {errorMessage}
+                        </Typography>
+                    )}
                 </form>
             </Box>
         </Container>

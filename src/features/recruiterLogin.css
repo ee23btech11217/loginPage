@@ -1,35 +1,61 @@
+/* recruiterLogin.css */
+
 .recruiter-login-container {
-    margin-top: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .recruiter-login-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center the form items horizontally */
-  }
-  
-  .recruiter-login-form .textfield {
-    margin-bottom: 0.8rem; /* Reduce the bottom margin by 20% */
-    width: 100%; /* Set the text fields to take full width */
-    max-width: 300px; /* Limit the maximum width */
-    height: 2.4rem; /* Reduce the height by 20% */
-  }
-  
-  .recruiter-login-captcha {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 0.8rem; /* Reduce the top margin by 20% */
-    width: 100%;
-  }
-  
-  .recruiter-login-error {
-    color: red;
-    margin-top: 1.6rem; /* Double the margin for 20% scaling */
-  }
-  
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  background-color: #fff;
+}
+
+.recruiter-login-title {
+  margin-bottom: 1rem;
+  color: #080808;
+}
+
+.recruiter-login-form {
+  width: 100%;
+}
+
+.textfield {
+  margin-bottom: 1rem;
+}
+
+.recruiter-login-captcha {
+  margin: 1rem 0; 
+  display: flex;
+  justify-content: center; /* Center horizontally */
+}
+
+.recruiter-login-button {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  text-transform: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.recruiter-login-button:hover {
+  background-color: #45a049;
+}
+
+.recruiter-login-error {
+  margin-top: 0.5rem; 
+  color: red;
+  font-weight: bold;
+}
+
+.g-recaptcha {
+  transform: scale(0.6);
+  transform-origin: 0 1;
+}

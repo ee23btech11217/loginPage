@@ -1,4 +1,3 @@
-// Button.js
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
@@ -9,7 +8,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
   height: 100,
   [theme.breakpoints.down('sm')]: {
-    width: '100% !important', // Overrides inline-style
+    width: '100% !important', // Overrides inline-style for smaller screens
     height: 80,
   },
   '&:hover, &.Mui-focusVisible': {
@@ -70,19 +69,20 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 const ImageButtonComponent = ({ image }) => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate(image.route); 
+    navigate(image.route); // Navigate to the route specified in the image prop
   };
 
   return (
     <ImageButton
       focusRipple
       style={{
-        width: image.width,
+        width: '25%', 
+        maxWidth: '100%', 
       }}
-      onClick={handleButtonClick} 
+      onClick={handleButtonClick}
     >
       <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
       <ImageBackdrop className="MuiImageBackdrop-root" />
