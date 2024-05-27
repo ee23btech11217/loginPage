@@ -1,7 +1,5 @@
-// src/App.js
-
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCurrentRoute } from './slice/routesSlice';
 import Buttons from './features/buttons';
@@ -21,36 +19,38 @@ function App() {
   }, [currentRoute, dispatch]);
 
   return (
-    <Container maxWidth="lg" className="container">
-      <AppBar position="static">
-        <Toolbar>
-          <Avatar alt="Logo" src="/ocs.jpg" sx={{ marginRight: 2 }} />
-          {currentRoute !== '/home' ? (
-            <Typography variant="h6" gutterBottom>
-              OCS Login Page
-            </Typography>
-          ) : (
-            <Typography variant="h6" gutterBottom>
-              OCS Home Page
-            </Typography>
+    <React.StrictMode>
+      <Container maxWidth="lg" className="container">
+        <AppBar position="static">
+          <Toolbar>
+            <Avatar alt="Logo" src="/ocs.jpg" sx={{ marginRight: 2 }} />
+            {currentRoute !== '/home' ? (
+              <Typography variant="h6" gutterBottom>
+                OCS Login Page
+              </Typography>
+            ) : (
+              <Typography variant="h6" gutterBottom>
+                OCS Home Page
+              </Typography>
+            )}
+          </Toolbar>
+        </AppBar>
+        <Box mt={2}>
+          {currentRoute !== '/home' && (
+            <Box className="buttons-container">
+              <Buttons />
+            </Box>
           )}
-        </Toolbar>
-      </AppBar>
-      <Box mt={2}>
-        {currentRoute !== '/home' && (
-          <Box className="buttons-container">
-            <Buttons />
-          </Box>
-        )}
-        <Routes>
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/student" element={<Login role="Student" />} />
-          <Route path="/staff" element={<Login role="Staff" />} />
-          <Route path="/coordinator" element={<Login role="Coordinator" />} />
-          <Route path="/recruiter" element={<RecruiterLogin />} />
-        </Routes>
-      </Box>
-    </Container>
+          <Routes>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/student" element={<Login role="Student" />} />
+            <Route path="/staff" element={<Login role="Staff" />} />
+            <Route path="/coordinator" element={<Login role="Coordinator" />} />
+            <Route path="/recruiter" element={<RecruiterLogin />} />
+          </Routes>
+        </Box>
+      </Container>
+    </React.StrictMode>
   );
 }
 
